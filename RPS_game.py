@@ -6,15 +6,15 @@ def play():
     user = user.lower()
 
     computer = random.choice(['r','p','s'])
-
+#If a tie, no points are added
     if user == computer:
         return (0, user, computer)
-    
+#If user wins, add 1 to user    
     if is_win(user, computer):
         return (1, user, computer)
-    
+#If computer wins, minus 1 to compuer    
     return (-1, user, computer)
-
+#Determines if the player or computer wins
 def is_win(player, opponent):
     if (player == 'r' and opponent == 's') or (player == 's' and opponent == 'p') or (player == 'p' and opponent == 'r'):
         return True
@@ -22,6 +22,7 @@ def is_win(player, opponent):
 
 
 def play_best_of(n):
+#Keeps count of wins compared to how how many wins needed.    
     player_wins = 0
     computer_wins = 0
     wins_necessary = math.ceil(n/2)
